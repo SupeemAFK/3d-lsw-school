@@ -640,12 +640,11 @@ type GLTFResult = GLTF & {
 
 export interface IModelProps {
   openUI: boolean;
-  openSidebar: boolean;
   setOpenSidebar: React.Dispatch<React.SetStateAction<boolean>>;
   setSidebarContent: React.Dispatch<React.SetStateAction<ISidebarContent>>;
 }
 
-export default function Model({ openUI, openSidebar, setOpenSidebar, setSidebarContent }: IModelProps) {
+export default function Model({ openUI, setOpenSidebar, setSidebarContent }: IModelProps) {
   const { nodes, materials } = useGLTF('/3d-model/lsw.gltf') as GLTFResult
   return (
     <group dispose={null}>
@@ -655,7 +654,7 @@ export default function Model({ openUI, openSidebar, setOpenSidebar, setSidebarC
             <Html position={[-5, 15, 0]}>
               <div id="Shrine" className='rounded-lg bg-blue-700 p-2'>
                 <button onClick={() => {
-                  setOpenSidebar(!openSidebar)
+                  setOpenSidebar(true)
                   setSidebarContent(lswData.Shrine)
                 }} className='flex justify-center items-center text-white'><BiSearchAlt /></button>
               </div>
@@ -1046,7 +1045,7 @@ export default function Model({ openUI, openSidebar, setOpenSidebar, setSidebarC
           <Html position={[5, 8, 0]}>
             <div id="MEP_IEP" className='rounded-lg bg-blue-700 p-2'>
               <button onClick={() => {
-                  setOpenSidebar(!openSidebar)
+                  setOpenSidebar(true)
                   setSidebarContent(lswData.MEP_IEP_Building)
                 }} className='flex justify-center items-center text-white'><BiSearchAlt /></button>
             </div>
@@ -1060,7 +1059,7 @@ export default function Model({ openUI, openSidebar, setOpenSidebar, setSidebarC
           <Html position={[-2, 12, 0]}>
             <div id="Computer" className='rounded-lg bg-blue-700 p-2'>
               <button onClick={() => {
-                  setOpenSidebar(!openSidebar)
+                  setOpenSidebar(true)
                   setSidebarContent(lswData.Computer_Building)
                 }} className='flex justify-center items-center text-white'><BiSearchAlt /></button>
             </div>
@@ -1082,7 +1081,7 @@ export default function Model({ openUI, openSidebar, setOpenSidebar, setSidebarC
           <Html position={[0, 3.2, 0]}>
             <div id="Library" className='rounded-lg bg-blue-700 p-2'>
               <button onClick={() => {
-                  setOpenSidebar(!openSidebar)
+                  setOpenSidebar(true)
                   setSidebarContent(lswData.Library)
                 }} className='flex justify-center items-center text-white'><BiSearchAlt /></button>
             </div>
@@ -1096,7 +1095,7 @@ export default function Model({ openUI, openSidebar, setOpenSidebar, setSidebarC
           <Html position={[0, 3.2, 0]}>
             <div id="Audiovisual_room" className='rounded-lg bg-blue-700 p-2'>
               <button onClick={() => {
-                  setOpenSidebar(!openSidebar)
+                  setOpenSidebar(true)
                   setSidebarContent(lswData.Audiovisual_Room)
                 }} className='flex justify-center items-center text-white'><BiSearchAlt /></button>
             </div>
@@ -1110,7 +1109,7 @@ export default function Model({ openUI, openSidebar, setOpenSidebar, setSidebarC
           <Html position={[0, 3, 0]}>
             <div id="Faculty_of_art" className='rounded-lg bg-blue-700 p-2'>
               <button onClick={() => {
-                  setOpenSidebar(!openSidebar)
+                  setOpenSidebar(true)
                   setSidebarContent(lswData.Faculty_of_art)
                 }} className='flex justify-center items-center text-white'><BiSearchAlt /></button>
             </div>
@@ -1124,7 +1123,7 @@ export default function Model({ openUI, openSidebar, setOpenSidebar, setSidebarC
           <Html position={[0, -1.6, 0]}>
             <div id="WorldClass" className='rounded-lg bg-blue-700 p-2'>
               <button onClick={() => {
-                  setOpenSidebar(!openSidebar)
+                  setOpenSidebar(true)
                   setSidebarContent(lswData.WorldClass)
                 }} className='flex justify-center items-center text-white'><BiSearchAlt /></button>
             </div>
@@ -1139,7 +1138,7 @@ export default function Model({ openUI, openSidebar, setOpenSidebar, setSidebarC
           <Html position={[0.1, -2.3, 0]}>
             <div id="Social_Study_Building" className='rounded-lg bg-blue-700 p-2'>
               <button onClick={() => {
-                  setOpenSidebar(!openSidebar)
+                  setOpenSidebar(true)
                   setSidebarContent(lswData.Social_Study_Building)
                 }} className='flex justify-center items-center text-white'><BiSearchAlt /></button>
             </div>
@@ -1153,7 +1152,7 @@ export default function Model({ openUI, openSidebar, setOpenSidebar, setSidebarC
           <Html position={[0, 2, 0]}>
             <div id="100years" className='rounded-lg bg-blue-700 p-2'>
               <button onClick={() => {
-                  setOpenSidebar(!openSidebar)
+                  setOpenSidebar(true)
                   setSidebarContent(lswData.One_hundred_years_buildings)
                 }} className='flex justify-center items-center text-white'><BiSearchAlt /></button>
             </div>
@@ -1170,7 +1169,7 @@ export default function Model({ openUI, openSidebar, setOpenSidebar, setSidebarC
           <Html position={[0, 1.6, 0]}>
             <div id="Fourth_building" className='rounded-lg bg-blue-700 p-2'>
               <button onClick={() => {
-                  setOpenSidebar(!openSidebar)
+                  setOpenSidebar(true)
                   setSidebarContent(lswData.Fourth_Building)
                 }} className='flex justify-center items-center text-white'><BiSearchAlt /></button>
             </div>
@@ -1201,7 +1200,7 @@ export default function Model({ openUI, openSidebar, setOpenSidebar, setSidebarC
           <Html position={[0, 3.5, 0]}>
             <div id="Lab" className='rounded-lg bg-blue-700 p-2'>
               <button onClick={() => {
-                  setOpenSidebar(!openSidebar)
+                  setOpenSidebar(true)
                   setSidebarContent(lswData.Lab)
                 }} className='flex justify-center items-center text-white'><BiSearchAlt /></button>
             </div>
@@ -1238,7 +1237,7 @@ export default function Model({ openUI, openSidebar, setOpenSidebar, setSidebarC
             <Html position={[0, -3, 0]}>
               <div id="Food_Hall" className='rounded-lg bg-blue-700 p-2'>
                 <button onClick={() => {
-                  setOpenSidebar(!openSidebar)
+                  setOpenSidebar(true)
                   setSidebarContent(lswData.Food_Hall)
                 }} className='flex justify-center items-center text-white'><BiSearchAlt /></button>
               </div>
@@ -1246,7 +1245,7 @@ export default function Model({ openUI, openSidebar, setOpenSidebar, setSidebarC
             <Html position={[0, -3, 2.5]}>
               <div id="Meeting_Hall" className='rounded-lg bg-blue-700 p-2'>
                 <button onClick={() => {
-                  setOpenSidebar(!openSidebar)
+                  setOpenSidebar(true)
                   setSidebarContent(lswData.Meeting_Hall)
                 }} className='flex justify-center items-center text-white'><BiSearchAlt /></button>
               </div>
@@ -1254,7 +1253,7 @@ export default function Model({ openUI, openSidebar, setOpenSidebar, setSidebarC
             <Html position={[0, -4.5, -2.3]}>
               <div id="Art" className='rounded-lg bg-blue-700 p-2'>
                 <button onClick={() => {
-                  setOpenSidebar(!openSidebar)
+                  setOpenSidebar(true)
                   setSidebarContent(lswData.Art_Building)
                 }} className='flex justify-center items-center text-white'><BiSearchAlt /></button>
               </div>
@@ -1262,7 +1261,7 @@ export default function Model({ openUI, openSidebar, setOpenSidebar, setSidebarC
             <Html position={[-1.85, -1.5, -2.1]}>
               <div id="Agriculture_building" className='rounded-lg bg-blue-700 p-2'>
                 <button onClick={() => {
-                  setOpenSidebar(!openSidebar)
+                  setOpenSidebar(true)
                   setSidebarContent(lswData.Agriculture_Building)
                 }} className='flex justify-center items-center text-white'><BiSearchAlt /></button>
               </div>
@@ -1279,7 +1278,7 @@ export default function Model({ openUI, openSidebar, setOpenSidebar, setSidebarC
           <Html position={[0, 2.7, 0]}>
             <div id="Sport_building" className='rounded-lg bg-blue-700 p-2'>
               <button onClick={() => {
-                  setOpenSidebar(!openSidebar)
+                  setOpenSidebar(true)
                   setSidebarContent(lswData.Sport_building)
                 }} className='flex justify-center items-center text-white'><BiSearchAlt /></button>
             </div>
@@ -1296,7 +1295,7 @@ export default function Model({ openUI, openSidebar, setOpenSidebar, setSidebarC
           <Html position={[170, 5.3, 50]}>
             <div id="Science_building" className='rounded-lg bg-blue-700 p-2'>
               <button onClick={() => {
-                  setOpenSidebar(!openSidebar)
+                  setOpenSidebar(true)
                   setSidebarContent(lswData.Science_building)
                 }} className='flex justify-center items-center text-white'><BiSearchAlt /></button>
             </div>

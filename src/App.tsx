@@ -21,7 +21,7 @@ function App() {
       <div className="w-screen h-screen fixed bg-orange-50 -z-10">
         <Canvas>
           <ambientLight />
-          <Model openUI={openUI} openSidebar={openSidebar} setOpenSidebar={setOpenSidebar} setSidebarContent={setSidebarContent} />
+          <Model openUI={openUI} setOpenSidebar={setOpenSidebar} setSidebarContent={setSidebarContent} />
           <OrbitControls />
         </Canvas>
       </div>
