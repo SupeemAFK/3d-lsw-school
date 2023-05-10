@@ -8,6 +8,7 @@ import { useGLTF, Html  } from '@react-three/drei'
 import { GLTF } from 'three-stdlib'
 import { BiSearchAlt } from 'react-icons/bi'
 import { ISidebarContent } from '../interfaces/sidebarContent'
+import { lswData } from '../data/lswData'
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -638,30 +639,28 @@ type GLTFResult = GLTF & {
 }
 
 export interface IModelProps {
-  openSidebar: boolean
-  setOpenSidebar: React.Dispatch<React.SetStateAction<boolean>>
-  setSidebarContent: React.Dispatch<React.SetStateAction<ISidebarContent>>
+  openUI: boolean;
+  openSidebar: boolean;
+  setOpenSidebar: React.Dispatch<React.SetStateAction<boolean>>;
+  setSidebarContent: React.Dispatch<React.SetStateAction<ISidebarContent>>;
 }
 
-export default function Model({ openSidebar, setOpenSidebar, setSidebarContent }: IModelProps) {
+export default function Model({ openUI, openSidebar, setOpenSidebar, setSidebarContent }: IModelProps) {
   const { nodes, materials } = useGLTF('/3d-model/lsw.gltf') as GLTFResult
   return (
     <group dispose={null}>
       <group position={[-57.23, 5.6, 117.26]} rotation={[-Math.PI / 2, 0, -Math.PI]} scale={0.26}>
         <group rotation={[Math.PI / 2, 0, 0]}>
-          <Html position={[-5, 15, 0]}>
-            <div id="Shrine" className='rounded-lg bg-blue-700 p-2'>
-              <button onClick={() => {
-                setOpenSidebar(!openSidebar)
-                setSidebarContent({ 
-                  img: "/images/koksai.jpg", 
-                  header: "ศาลเจ้าพ่อกกไทร", 
-                  preContent: "fafa", 
-                  content: "fasf" 
-                })
-              }} className='flex justify-center items-center text-white'><BiSearchAlt /></button>
-            </div>
-          </Html>
+          {openUI && (
+            <Html position={[-5, 15, 0]}>
+              <div id="Shrine" className='rounded-lg bg-blue-700 p-2'>
+                <button onClick={() => {
+                  setOpenSidebar(!openSidebar)
+                  setSidebarContent(lswData.Shrine)
+                }} className='flex justify-center items-center text-white'><BiSearchAlt /></button>
+              </div>
+            </Html>
+          )}
           <mesh geometry={nodes.Garden_Shrine_lambert7_0.geometry} material={materials['Material.103']} position={[-5.77, -1.43, 0]} rotation={[-Math.PI, 0.02, -Math.PI]} scale={0.13} />
         </group>
       </group>
@@ -1043,20 +1042,30 @@ export default function Model({ openSidebar, setOpenSidebar, setSidebarContent }
         </group>
       </group>
       <group position={[-34.13, 7.53, -34.09]} scale={[2.93, 1.42, 1.39]}>
-        <Html position={[5, 8, 0]}>
-          <div id="MEP_IEP" className='rounded-lg bg-blue-700 p-2'>
-            <button className='flex justify-center items-center text-white'><BiSearchAlt /></button>
-          </div>
-        </Html>
+        {openUI && (
+          <Html position={[5, 8, 0]}>
+            <div id="MEP_IEP" className='rounded-lg bg-blue-700 p-2'>
+              <button onClick={() => {
+                  setOpenSidebar(!openSidebar)
+                  setSidebarContent(lswData.MEP_IEP_Building)
+                }} className='flex justify-center items-center text-white'><BiSearchAlt /></button>
+            </div>
+          </Html>
+        )}
         <mesh geometry={nodes.Cube003_1.geometry} material={materials['Material.134']} />
         <mesh geometry={nodes.Cube003_2.geometry} material={materials['Material.092']} />
       </group>
       <group position={[-30.13, 6.06, -14.44]} scale={[3.68, 0.57, 0.57]}>
-        <Html position={[-2, 12, 0]}>
-          <div id="Computer" className='rounded-lg bg-blue-700 p-2'>
-            <button className='flex justify-center items-center text-white'><BiSearchAlt /></button>
-          </div>
-        </Html>
+        {openUI && (
+          <Html position={[-2, 12, 0]}>
+            <div id="Computer" className='rounded-lg bg-blue-700 p-2'>
+              <button onClick={() => {
+                  setOpenSidebar(!openSidebar)
+                  setSidebarContent(lswData.Computer_Building)
+                }} className='flex justify-center items-center text-white'><BiSearchAlt /></button>
+            </div>
+          </Html>
+        )}
         <mesh geometry={nodes.Cube019_1.geometry} material={materials['Material.113']} />
         <mesh geometry={nodes.Cube019_2.geometry} material={materials['Material.003']} />
         <mesh geometry={nodes.Cube019_3.geometry} material={materials['Material.010']} />
@@ -1069,57 +1078,87 @@ export default function Model({ openSidebar, setOpenSidebar, setSidebarContent }
         <mesh geometry={nodes.Cube022_2.geometry} material={materials['Material.175']} />
       </group>
       <group position={[-69.41, 6.67, -22.43]} rotation={[0, Math.PI / 2, 0]} scale={[6.79, 1.11, 2.91]}>
-        <Html position={[0, 3.2, 0]}>
-          <div id="Library" className='rounded-lg bg-blue-700 p-2'>
-            <button className='flex justify-center items-center text-white'><BiSearchAlt /></button>
-          </div>
-        </Html>
+        {openUI && (
+          <Html position={[0, 3.2, 0]}>
+            <div id="Library" className='rounded-lg bg-blue-700 p-2'>
+              <button onClick={() => {
+                  setOpenSidebar(!openSidebar)
+                  setSidebarContent(lswData.Library)
+                }} className='flex justify-center items-center text-white'><BiSearchAlt /></button>
+            </div>
+          </Html>
+        )}
         <mesh geometry={nodes.Cube005.geometry} material={materials['Material.111']} />
         <mesh geometry={nodes.Cube005_1.geometry} material={materials['Material.168']} />
       </group>
       <group position={[-71.97, 6.65, -52.93]} scale={[8.31, 1.11, 1.35]}>
-        <Html position={[0, 3.2, 0]}>
-          <div id="MeetingRoom" className='rounded-lg bg-blue-700 p-2'>
-            <button className='flex justify-center items-center text-white'><BiSearchAlt /></button>
-          </div>
-        </Html>
+        {openUI && (
+          <Html position={[0, 3.2, 0]}>
+            <div id="Audiovisual_room" className='rounded-lg bg-blue-700 p-2'>
+              <button onClick={() => {
+                  setOpenSidebar(!openSidebar)
+                  setSidebarContent(lswData.Audiovisual_Room)
+                }} className='flex justify-center items-center text-white'><BiSearchAlt /></button>
+            </div>
+          </Html>
+        )}
         <mesh geometry={nodes.Cube007_1.geometry} material={materials['Material.129']} />
         <mesh geometry={nodes.Cube007_2.geometry} material={materials['Material.171']} />
       </group>
       <group position={[-12.81, 7.06, -48.16]} scale={[6.65, 1.54, 6.25]}>
-        <Html position={[0, 3, 0]}>
-          <div id="Kahakum" className='rounded-lg bg-blue-700 p-2'>
-            <button className='flex justify-center items-center text-white'><BiSearchAlt /></button>
-          </div>
-        </Html>
+        {openUI && (
+          <Html position={[0, 3, 0]}>
+            <div id="Faculty_of_art" className='rounded-lg bg-blue-700 p-2'>
+              <button onClick={() => {
+                  setOpenSidebar(!openSidebar)
+                  setSidebarContent(lswData.Faculty_of_art)
+                }} className='flex justify-center items-center text-white'><BiSearchAlt /></button>
+            </div>
+          </Html>
+        )}
         <mesh geometry={nodes.Cube009_1.geometry} material={materials['Material.135']} />
         <mesh geometry={nodes.Cube009_2.geometry} material={materials['Material.173']} />
       </group>
       <group position={[-69.37, 7.34, -12.38]} scale={[-2.69, -1.77, -1.5]}>
-        <Html position={[0, -1.6, 0]}>
-          <div id="WorldClass" className='rounded-lg bg-blue-700 p-2'>
-            <button className='flex justify-center items-center text-white'><BiSearchAlt /></button>
-          </div>
-        </Html>
+        {openUI && (
+          <Html position={[0, -1.6, 0]}>
+            <div id="WorldClass" className='rounded-lg bg-blue-700 p-2'>
+              <button onClick={() => {
+                  setOpenSidebar(!openSidebar)
+                  setSidebarContent(lswData.WorldClass)
+                }} className='flex justify-center items-center text-white'><BiSearchAlt /></button>
+            </div>
+          </Html>
+        )}
         <mesh geometry={nodes.Cube011_1.geometry} material={materials.Material} />
         <mesh geometry={nodes.Cube011_2.geometry} material={materials['Material.169']} />
         <mesh geometry={nodes.Cube011_3.geometry} material={materials['Material.170']} />
       </group>
       <group position={[26.35, 9.17, -34.13]} rotation={[-Math.PI, 0, 0]} scale={[20.8, 3.09, 2.02]}>
-        <Html position={[0.1, -2.3, 0]}>
-          <div id="Green_Building" className='rounded-lg bg-blue-700 p-2'>
-            <button className='flex justify-center items-center text-white'><BiSearchAlt /></button>
-          </div>
-        </Html>
+        {openUI && (
+          <Html position={[0.1, -2.3, 0]}>
+            <div id="Social_Study_Building" className='rounded-lg bg-blue-700 p-2'>
+              <button onClick={() => {
+                  setOpenSidebar(!openSidebar)
+                  setSidebarContent(lswData.Social_Study_Building)
+                }} className='flex justify-center items-center text-white'><BiSearchAlt /></button>
+            </div>
+          </Html>
+        )}
         <mesh geometry={nodes.Cube012_1.geometry} material={materials['Material.136']} />
         <mesh geometry={nodes.Cube012_2.geometry} material={materials['Material.174']} />
       </group>
       <group position={[2.25, 10.78, 25.3]} rotation={[0, Math.PI / 2, 0]} scale={[24.09, 4.82, 2.53]}>
-        <Html position={[0, 2, 0]}>
-          <div id="100years" className='rounded-lg bg-blue-700 p-2'>
-            <button className='flex justify-center items-center text-white'><BiSearchAlt /></button>
-          </div>
-        </Html>
+        {openUI && (
+          <Html position={[0, 2, 0]}>
+            <div id="100years" className='rounded-lg bg-blue-700 p-2'>
+              <button onClick={() => {
+                  setOpenSidebar(!openSidebar)
+                  setSidebarContent(lswData.One_hundred_years_buildings)
+                }} className='flex justify-center items-center text-white'><BiSearchAlt /></button>
+            </div>
+          </Html>
+        )}
         <mesh geometry={nodes.Cube013_1.geometry} material={materials['Material.001']} />
         <mesh geometry={nodes.Cube013_2.geometry} material={materials['Material.181']} />
         <mesh geometry={nodes.Cube013_3.geometry} material={materials['Material.182']} />
@@ -1127,11 +1166,16 @@ export default function Model({ openSidebar, setOpenSidebar, setSidebarContent }
         <mesh geometry={nodes.Cube013_5.geometry} material={materials['Material.185']} />
       </group>
       <group position={[15.31, 9.88, 107.9]} rotation={[Math.PI, 0, Math.PI]} scale={[16.54, 4, 1.69]}>
-        <Html position={[0, 1.6, 0]}>
-          <div id="Fourth_building" className='rounded-lg bg-blue-700 p-2'>
-            <button className='flex justify-center items-center text-white'><BiSearchAlt /></button>
-          </div>
-        </Html>
+        {openUI && (
+          <Html position={[0, 1.6, 0]}>
+            <div id="Fourth_building" className='rounded-lg bg-blue-700 p-2'>
+              <button onClick={() => {
+                  setOpenSidebar(!openSidebar)
+                  setSidebarContent(lswData.Fourth_Building)
+                }} className='flex justify-center items-center text-white'><BiSearchAlt /></button>
+            </div>
+          </Html>
+        )}
         <mesh geometry={nodes.Cube006_1.geometry} material={materials['Material.020']} />
         <mesh geometry={nodes.Cube006_2.geometry} material={materials['Material.176']} />
       </group>
@@ -1153,11 +1197,16 @@ export default function Model({ openSidebar, setOpenSidebar, setSidebarContent }
       <mesh geometry={nodes.Cube097.geometry} material={materials['Material.166']} position={[-61.3, 6.09, 8.08]} scale={[-0.01, -0.6, -0.01]} />
       <mesh geometry={nodes.Cube098.geometry} material={materials['Material.165']} position={[-61.3, 6.09, 11.04]} scale={[-0.01, -0.6, -0.01]} />
       <group position={[-50.28, 6.4, -52.93]} scale={[9.81, 0.85, 1.35]}>
-        <Html position={[0, 3.5, 0]}>
-          <div id="Lab" className='rounded-lg bg-blue-700 p-2'>
-            <button className='flex justify-center items-center text-white'><BiSearchAlt /></button>
-          </div>
-        </Html>
+        {openUI && (
+          <Html position={[0, 3.5, 0]}>
+            <div id="Lab" className='rounded-lg bg-blue-700 p-2'>
+              <button onClick={() => {
+                  setOpenSidebar(!openSidebar)
+                  setSidebarContent(lswData.Lab)
+                }} className='flex justify-center items-center text-white'><BiSearchAlt /></button>
+            </div>
+          </Html>
+        )}
         <mesh geometry={nodes.Cube100.geometry} material={materials['Material.130']} />
         <mesh geometry={nodes.Cube100_1.geometry} material={materials['Material.172']} />
       </group>
@@ -1184,37 +1233,58 @@ export default function Model({ openSidebar, setOpenSidebar, setSidebarContent }
       <mesh geometry={nodes.ลูกบาศก์009.geometry} material={materials['Material.148']} position={[35.88, 5.94, -7.63]} scale={[0.15, 0.03, 0.77]} />
       <group position={[42.77, 7.45, -9.27]} rotation={[0, Math.PI / 2, 0]} scale={[-8.81, -1.87, -12.58]}>
         <mesh geometry={nodes.ลูกบาศก์016.geometry} material={materials['Material.005']} />
-        <Html position={[0, -3, 0]}>
-          <div id="Food_Hall" className='rounded-lg bg-blue-700 p-2'>
-            <button className='flex justify-center items-center text-white'><BiSearchAlt /></button>
-          </div>
-        </Html>
-        <Html position={[0, -3, 2.5]}>
-          <div id="Meeting_Hall" className='rounded-lg bg-blue-700 p-2'>
-            <button className='flex justify-center items-center text-white'><BiSearchAlt /></button>
-          </div>
-        </Html>
-        <Html position={[0, -4.5, -2.3]}>
-          <div id="Art" className='rounded-lg bg-blue-700 p-2'>
-            <button className='flex justify-center items-center text-white'><BiSearchAlt /></button>
-          </div>
-        </Html>
-        <Html position={[-1.85, -1.5, -2.1]}>
-          <div id="Agriculture_building" className='rounded-lg bg-blue-700 p-2'>
-            <button className='flex justify-center items-center text-white'><BiSearchAlt /></button>
-          </div>
-        </Html>
+        {openUI && (
+          <>
+            <Html position={[0, -3, 0]}>
+              <div id="Food_Hall" className='rounded-lg bg-blue-700 p-2'>
+                <button onClick={() => {
+                  setOpenSidebar(!openSidebar)
+                  setSidebarContent(lswData.Food_Hall)
+                }} className='flex justify-center items-center text-white'><BiSearchAlt /></button>
+              </div>
+            </Html>
+            <Html position={[0, -3, 2.5]}>
+              <div id="Meeting_Hall" className='rounded-lg bg-blue-700 p-2'>
+                <button onClick={() => {
+                  setOpenSidebar(!openSidebar)
+                  setSidebarContent(lswData.Meeting_Hall)
+                }} className='flex justify-center items-center text-white'><BiSearchAlt /></button>
+              </div>
+            </Html>
+            <Html position={[0, -4.5, -2.3]}>
+              <div id="Art" className='rounded-lg bg-blue-700 p-2'>
+                <button onClick={() => {
+                  setOpenSidebar(!openSidebar)
+                  setSidebarContent(lswData.Art_Building)
+                }} className='flex justify-center items-center text-white'><BiSearchAlt /></button>
+              </div>
+            </Html>
+            <Html position={[-1.85, -1.5, -2.1]}>
+              <div id="Agriculture_building" className='rounded-lg bg-blue-700 p-2'>
+                <button onClick={() => {
+                  setOpenSidebar(!openSidebar)
+                  setSidebarContent(lswData.Agriculture_Building)
+                }} className='flex justify-center items-center text-white'><BiSearchAlt /></button>
+              </div>
+            </Html>
+          </>
+        )}
         <mesh geometry={nodes.ลูกบาศก์016_1.geometry} material={materials['Material.177']} />
         <mesh geometry={nodes.ลูกบาศก์016_2.geometry} material={materials['Material.178']} />
         <mesh geometry={nodes.ลูกบาศก์016_3.geometry} material={materials['Material.179']} />
       </group>
       <mesh geometry={nodes.Cube001.geometry} material={materials['Material.139']} position={[68.04, 6.68, -25.86]} scale={[7.1, 1.2, 4.71]} />
       <group position={[28.24, 9.11, 67.04]} rotation={[Math.PI, 0, Math.PI]} scale={[11.79, 3.59, 7.69]}>
-        <Html position={[0, 2.7, 0]}>
-          <div id="Sport_building" className='rounded-lg bg-blue-700 p-2'>
-            <button className='flex justify-center items-center text-white'><BiSearchAlt /></button>
-          </div>
-        </Html>
+        {openUI && (
+          <Html position={[0, 2.7, 0]}>
+            <div id="Sport_building" className='rounded-lg bg-blue-700 p-2'>
+              <button onClick={() => {
+                  setOpenSidebar(!openSidebar)
+                  setSidebarContent(lswData.Sport_building)
+                }} className='flex justify-center items-center text-white'><BiSearchAlt /></button>
+            </div>
+          </Html>
+        )}
         <mesh geometry={nodes.Cube051.geometry} material={materials['Material.006']} />
         <mesh geometry={nodes.Cube051_1.geometry} material={materials['Material.180']} />
       </group>
@@ -1222,11 +1292,16 @@ export default function Model({ openSidebar, setOpenSidebar, setSidebarContent }
       <mesh geometry={nodes.Cube069.geometry} material={materials['Material.127']} position={[-74.51, 6.21, -34.54]} rotation={[0, Math.PI / 2, 0]} scale={[2.07, 0.77, 2.01]} />
       <mesh geometry={nodes.Cube077.geometry} material={materials['Material.128']} position={[-76.56, 6.57, -50.84]} scale={[0.03, 1.13, 0.03]} />
       <group position={[-62.21, 6.75, -36.07]} scale={[0.07, 1.45, 0.07]}>
-        <Html position={[170, 5.3, 50]}>
-          <div id="Science_building" className='rounded-lg bg-blue-700 p-2'>
-            <button className='flex justify-center items-center text-white'><BiSearchAlt /></button>
-          </div>
-        </Html>
+        {openUI && (
+          <Html position={[170, 5.3, 50]}>
+            <div id="Science_building" className='rounded-lg bg-blue-700 p-2'>
+              <button onClick={() => {
+                  setOpenSidebar(!openSidebar)
+                  setSidebarContent(lswData.Science_building)
+                }} className='flex justify-center items-center text-white'><BiSearchAlt /></button>
+            </div>
+          </Html>
+        )}
         <mesh geometry={nodes.Cube072.geometry} material={materials['Material.133']} />
         <mesh geometry={nodes.Cube072_1.geometry} material={materials['Material.093']} />
         <mesh geometry={nodes.Cube072_2.geometry} material={materials['Material.094']} />
