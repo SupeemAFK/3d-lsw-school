@@ -19,7 +19,11 @@ function App() {
       </div>
       <Sidebar openSidebar={openSidebar} sidebarContent={sidebarContent} setOpenSidebar={setOpenSidebar} />
       <div className="w-screen h-screen fixed bg-orange-50 -z-10">
-        <Canvas>
+        <Canvas camera={{ position: [
+          -162.3505874658989,
+          67.07642166388968,
+          22.78286716193659
+        ] }}>
           <ambientLight />
           <Model openUI={openUI} setOpenSidebar={setOpenSidebar} setSidebarContent={setSidebarContent} />
           <OrbitControls />
